@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PlayerNumberModeActivity extends AppCompatActivity {
     private int playerNumber;
-    private GameLogic game = new GameLogic();;
+    private GameLogic game = new GameLogic();
     private int attempts;
     private boolean numberSet;
     private TextView tvStatus;
@@ -18,6 +18,9 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
     private Button btnHigher;
     private Button btnLower;
     private Button btnStart;
+    private Button btnAction;
+    private Button btnBack;
+    private Button btnReset;
     private boolean high;
     private int compNumber;
 
@@ -35,10 +38,9 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
         btnStart.setVisibility(View.GONE);
         btnHigher = findViewById(R.id.btnHigher);
         btnLower = findViewById(R.id.btnLower);
-
-        Button btnAction = findViewById(R.id.btnAction);
-        Button btnBack = findViewById(R.id.btnBack);
-        Button btnReset = findViewById(R.id.btnReset);
+        btnAction = findViewById(R.id.btnAction);
+        btnBack = findViewById(R.id.btnBack);
+        btnReset = findViewById(R.id.btnReset);
 
         btnHigher.setVisibility(View.GONE);
         btnLower.setVisibility(View.GONE);
@@ -46,7 +48,11 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
         btnAction.setOnClickListener(v -> {
             if (!numberSet) {
                 try {
-                    String input = etInput.getText().toString();
+                    if (etInput == null) {
+                        tvStatus.setText("Ошибка: поле ввода не найдено");
+                        return;
+                    }
+                    String input = etInput.getText().toString(); // Строка 45
                     if (input.isEmpty()) {
                         tvStatus.setText("Введите число!");
                         return;
@@ -62,7 +68,7 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
                     btnStart.setVisibility(View.VISIBLE);
                     etInput.setVisibility(View.GONE);
                     tvNumComp.setVisibility(View.VISIBLE);
-                    btnAction.setVisibility(View.GONE);  // Скрываем кнопку (но потом она должна вернуться!)
+                    btnAction.setVisibility(View.GONE);
                     btnHigher.setVisibility(View.VISIBLE);
                     btnLower.setVisibility(View.VISIBLE);
                 } catch (NumberFormatException e) {
@@ -70,11 +76,13 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
                 }
             }
         });
+
         btnStart.setOnClickListener(v->{
             compNumber = (int) (Math.random() * 100) + 1;
             tvNumComp.setText(String.valueOf(compNumber));
             btnStart.setVisibility(View.GONE);
         });
+
         btnHigher.setOnClickListener(v -> {
             high = true;
             compNumber = game.checkNumPlayer(compNumber, high);
@@ -96,6 +104,7 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
                 tvStatus.setText("Компьютер не угадал число");
             }
         });
+
         btnBack.setOnClickListener(v -> finish());
 
         btnReset.setOnClickListener(v -> {
@@ -105,12 +114,11 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
             tvStatus.setText("Загадайте число от 1 до 100");
             etInput.setHint("Ваше число");
             etInput.setText("");
-            btnAction.setVisibility(View.VISIBLE);  // <-- Важно!
+            btnAction.setVisibility(View.VISIBLE);
             etInput.setVisibility(View.VISIBLE);
             tvNumComp.setVisibility(View.GONE);
             btnHigher.setVisibility(View.GONE);
             btnLower.setVisibility(View.GONE);
-            btnStart.setVisibility(View.GONE);  // <-- Добавьте, если её нет
         });
     }
 }

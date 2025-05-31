@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:hint="Ваше число"
         android:inputType="number"
-        android:layout_marginBottom="16dp"
         android:visibility="visible"/>
 
     <TextView
