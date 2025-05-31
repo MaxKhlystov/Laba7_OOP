@@ -7,13 +7,18 @@
 
     <TextView
         android:id="@+id/tvHint"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"
-        android:minHeight="100dp"/> <!-- Увеличим высоту для многострочного текста -->
+        android:minHeight="100dp"/>
 
-    <!-- Остальная разметка без изменений -->
+    <Spinner
+        android:id="@+id/spinnerAttempts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+
     <EditText
         android:id="@+id/etGuess"
         android:layout_width="match_parent"
@@ -23,11 +28,19 @@
         android:layout_marginBottom="16dp"/>
 
     <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Старт"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Проверить"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btnReset"

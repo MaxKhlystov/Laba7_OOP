@@ -43,8 +43,9 @@ public class GameLogic {
 
     public void setSecretNumber(int number) {
         this.secretNumber = number;
-        resetGamePlayerNum();  // Сбросить min/max/attempts
+        resetGamePlayerNum();
     }
+
 
     public int checkNumPlayer(int num, boolean high) {
         attempts++;
@@ -73,5 +74,8 @@ public class GameLogic {
 
     public int getSecretNumber() {
         return secretNumber;
+    }
+    public void setMaxAttempts(int maxAttempts) {
+        this.maxAttempts = maxAttempts;
     }
 }
