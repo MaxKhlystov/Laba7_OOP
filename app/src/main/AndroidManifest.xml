@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".ClassicModeActivity" />
         <activity android:name=".PlayerNumberModeActivity" />
+        <activity android:name=".LevelsModeActivity" />
+        <activity android:name=".GameLevelActivity" />
     </application>
 
 </manifest>

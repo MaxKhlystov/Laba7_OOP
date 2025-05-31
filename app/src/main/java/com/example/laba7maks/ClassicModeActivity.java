@@ -1,7 +1,6 @@
 package com.example.laba7maks;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,7 +29,7 @@ public class ClassicModeActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnStart);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnReset = findViewById(R.id.btnReset);
-        btnBack = findViewById(R.id.btnBack);
+        btnBack = findViewById(R.id.btnBackToLevel);
 
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item,

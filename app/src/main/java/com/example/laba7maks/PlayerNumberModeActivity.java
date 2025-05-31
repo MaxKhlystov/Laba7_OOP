@@ -39,7 +39,7 @@ public class PlayerNumberModeActivity extends AppCompatActivity {
         btnHigher = findViewById(R.id.btnHigher);
         btnLower = findViewById(R.id.btnLower);
         btnAction = findViewById(R.id.btnAction);
-        btnBack = findViewById(R.id.btnBack);
+        btnBack = findViewById(R.id.btnBackToLevel);
         btnReset = findViewById(R.id.btnReset);
 
         btnHigher.setVisibility(View.GONE);

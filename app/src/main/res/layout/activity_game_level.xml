@@ -3,55 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:gravity="center">
 
     <TextView
-        android:id="@+id/tvHint"
+        android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Статус"
         android:textSize="18sp"
-        android:layout_marginBottom="16dp"
-        android:minHeight="100dp"/>
-
-    <Spinner
-        android:id="@+id/spinnerAttempts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <EditText
-        android:id="@+id/etGuess"
+        android:id="@+id/etInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ваше число"
+        android:hint="Введите число"
         android:inputType="number"
-        android:layout_marginBottom="16dp"/>
-
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Старт"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Проверить"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone"/>
+        android:layout_marginBottom="16dp"
+        android:visibility="visible"/>
 
     <Button
-        android:id="@+id/btnReset"
+        android:id="@+id/btnAgain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Заново"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btnBackToLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Назад"/>
+        android:text="Назад"
+        android:visibility="gone"/>
 </LinearLayout>

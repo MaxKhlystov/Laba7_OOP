@@ -16,11 +16,15 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnClassic = findViewById(R.id.btnClassic);
         Button btnPlayerNumber = findViewById(R.id.btnPlayerNumber);
+        Button btnLevelsMode = findViewById(R.id.btnLevelsMode);
+        Button btnExit = findViewById(R.id.btnExit);
 
         btnClassic.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ClassicModeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+            try {
+                startActivity(new Intent(this, ClassicModeActivity.class));
+            } catch (Exception e) {
+                Log.e("MainActivity", "Ошибка запуска ClassicModeActivity", e);
+            }
         });
 
         btnPlayerNumber.setOnClickListener(v -> {
@@ -30,5 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("MainActivity", "Ошибка запуска PlayerNumberModeActivity", e);
             }
         });
+        btnLevelsMode.setOnClickListener(v -> {
+            try {
+                startActivity(new Intent(this, LevelsModeActivity.class));
+            } catch (Exception e) {
+                Log.e("MainActivity", "Ошибка запуска LevelsModeActivity", e);
+            }
+        });
+        btnExit.setOnClickListener(v -> finish());
     }
 }

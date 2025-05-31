@@ -17,5 +17,19 @@
         android:id="@+id/btnPlayerNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Компьютер угадывает мое число"/>
+        android:text="Компьютер угадывает мое число"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnLevelsMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Уровни"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выйти"/>
 </LinearLayout>
