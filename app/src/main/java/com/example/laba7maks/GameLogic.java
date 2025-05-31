@@ -22,7 +22,7 @@ public class GameLogic {
         min = 1;
         max = 100;
         attempts = 0;
-        isGameOver = false;  // Сбросить состояние игры
+        isGameOver = false;
     }
 
     public String checkGuess(int guess) {
@@ -30,7 +30,7 @@ public class GameLogic {
 
         if (guess == secretNumber) {
             isGameOver = true;
-            return "Поздравляем! Вы угадали число за " + attempts + " попыток.\nЗагаданное число:"+ secretNumber + "\nТеперь угадайте новое число!";
+            return "Поздравляем! Вы угадали число за " + attempts + " попыток.\nЗагаданное число: "+ secretNumber + "\nТеперь угадайте новое число!";
         }
 
         if (attempts >= maxAttempts) {

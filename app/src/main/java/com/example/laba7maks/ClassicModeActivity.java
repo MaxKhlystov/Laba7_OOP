@@ -25,38 +25,38 @@ public class ClassicModeActivity extends AppCompatActivity {
         game = new GameLogic();
         tvHint = findViewById(R.id.tvHint);
         etGuess = findViewById(R.id.etGuess);
+        etGuess.setVisibility(View.GONE);
         spinnerAttempts = findViewById(R.id.spinnerAttempts);
         btnStart = findViewById(R.id.btnStart);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnReset = findViewById(R.id.btnReset);
         btnBack = findViewById(R.id.btnBack);
 
-        // Настройка Spinner (1-15 попыток)
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item,
                 new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAttempts.setAdapter(adapter);
-        spinnerAttempts.setSelection(14); // По умолчанию 15 попыток (индекс 14)
+        spinnerAttempts.setSelection(14);
 
         tvHint.setText("Выберите количество попыток и нажмите 'Старт'");
 
         // Обработка кнопки "Старт"
         btnStart.setOnClickListener(v -> {
             int maxAttempts = (int) spinnerAttempts.getSelectedItem();
-            game.setMaxAttempts(maxAttempts); // Нужно добавить метод в GameLogic!
-            game.resetGameClassic(); // Генерация числа
+            game.setMaxAttempts(maxAttempts);
+            game.resetGameClassic();
             tvHint.setText("Угадайте число от 1 до 100");
             updateAttemptsDisplay();
 
             // Меняем видимость кнопок
             btnStart.setVisibility(View.GONE);
             btnSubmit.setVisibility(View.VISIBLE);
-            spinnerAttempts.setEnabled(false); // Блокируем Spinner
+            etGuess.setVisibility(View.VISIBLE);
+            spinnerAttempts.setEnabled(false);
         });
 
-        // Обработка кнопки "Проверить" (старая логика)
         btnSubmit.setOnClickListener(v -> {
             try {
                 int guess = Integer.parseInt(etGuess.getText().toString());
@@ -68,7 +68,10 @@ public class ClassicModeActivity extends AppCompatActivity {
                 String result = game.checkGuess(guess);
                 tvHint.setText(result);
                 if (game.isGameOver()) {
-                    game.resetGameClassic();
+                    btnSubmit.setVisibility(View.GONE);
+                    etGuess.setVisibility(View.GONE);
+                    btnStart.setVisibility(View.VISIBLE);
+                    spinnerAttempts.setEnabled(true);
                 }
                 updateAttemptsDisplay();
                 etGuess.setText("");
@@ -84,7 +87,7 @@ public class ClassicModeActivity extends AppCompatActivity {
             tvHint.setText("Выберите количество попыток и нажмите 'Старт'");
             btnStart.setVisibility(View.VISIBLE);
             btnSubmit.setVisibility(View.GONE);
-            spinnerAttempts.setEnabled(true); // Разблокируем Spinner
+            spinnerAttempts.setEnabled(true);
             etGuess.setText("");
         });
     }
